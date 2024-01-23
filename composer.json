@@ -1,0 +1,20 @@
+{
+    "name": "hugojose39/omnipay-cielo-teste",
+    "description": "A simple package to payments",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hugojose39\\OmnipayCieloTeste\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hugo Jose",
+            "email": "hugojose39@yahoo.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    }
+}
