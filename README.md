@@ -3,7 +3,7 @@
 **Gateway Cielo para biblioteca de processamento de pagamentos Omnipay PHP**
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)]
-(LICENSE)
+(LICENSE.md)
 
 [Omnipay](https://github.com/thephpleague/omnipay) é um sistema de pagamento multigateway independente de estrutura biblioteca de processamento para PHP 5.3+. Este pacote implementa suporte Cielo para Omnipay.
 
