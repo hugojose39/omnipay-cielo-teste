@@ -9,7 +9,7 @@ class CreateCardTokenRequest extends AbstractRequest
         if ($this->getCard()) {
             $data = $this->getCardData();
         } else {
-            [];
+            $data = [];
         }
 
         return $data;
@@ -17,6 +17,6 @@ class CreateCardTokenRequest extends AbstractRequest
     
     public function getEndpoint()
     {
-        return $this->endpoint.'1/card';
+        return $this->endpoint().'1/card';
     }
 }

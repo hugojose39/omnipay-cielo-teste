@@ -1,0 +1,11 @@
+HTTP/1.1 400 BadRequest
+Content-Type: application/json
+
+{
+  "CardToken": "db62dc71-d07b-4745-9969-42697b988ccb",
+  "Links": {
+    "Method": "GET",
+    "Rel": "self",
+    "Href": "https://apiquerydev.cieloecommerce.cielo.com.br/1/card/db62dc71-d07b-4745-9969-42697b988ccb"
+  }
+}

@@ -1,0 +1,57 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"MerchantOrderId": "2014111706",
+	"Customer": {
+		"Name": "Paulo Henrique"
+	},
+	"Payment": {
+		"ServiceTaxAmount": 0,
+		"Installments": 1,
+		"Interest": 0,
+		"Capture": false,
+		"Authenticate": false,
+		"Recurrent": false,
+		"CreditCard": {
+			"CardNumber": "123412******1231",
+			"Holder": "Teste Holder",
+			"ExpirationDate": "03/2019",
+			"SaveCard": true,
+			"Brand": "Visa",
+			"PaymentAccountReference": "I7U6PL7WOVYRMJ2HEC2ULI2VH842V"
+		},
+		"Tid": "0124024650199",
+		"ProofOfSale": "911736",
+		"AuthorizationCode": "304752",
+		"Provider": "Simulado",
+		"IsQrCode": false,
+		"Amount": 100,
+		"ReceivedDate": "2024-01-24 14:46:50",
+		"Status": 1,
+		"IsSplitted": false,
+		"ReturnMessage": "Operation Successful",
+		"ReturnCode": "4",
+		"PaymentId": "01f2f7ca-958c-4cde-a153-f4bf2fe46697",
+		"Type": "CreditCard",
+		"Currency": "BRL",
+		"Country": "BRA",
+		"Links": [
+			{
+				"Method": "GET",
+				"Rel": "self",
+				"Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/01f2f7ca-958c-4cde-a153-f4bf2fe46697"
+			},
+			{
+				"Method": "PUT",
+				"Rel": "capture",
+				"Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/01f2f7ca-958c-4cde-a153-f4bf2fe46697/capture"
+			},
+			{
+				"Method": "PUT",
+				"Rel": "void",
+				"Href": "https://apisandbox.cieloecommerce.cielo.com.br/1/sales/01f2f7ca-958c-4cde-a153-f4bf2fe46697/void"
+			}
+		]
+	}
+}

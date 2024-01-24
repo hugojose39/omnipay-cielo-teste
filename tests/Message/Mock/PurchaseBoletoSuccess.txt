@@ -1,0 +1,50 @@
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"MerchantOrderId": "2014111706",
+	"Customer": {
+		"Name": "Comprador Teste Boleto",
+		"Identity": "1234567890",
+		"Address": {
+			"Street": "Avenida Marechal Câmara",
+			"Number": "160",
+			"Complement": "Sala 934",
+			"ZipCode": "22750012",
+			"City": "Rio de Janeiro",
+			"State": "RJ",
+			"Country": "BRA",
+			"District": "Centro",
+			"AddressType": 0
+		}
+	},
+	"Payment": {
+		"Instructions": "Aceitar somente até a data de vencimento, após essa data juros de 1% dia.",
+		"ExpirationDate": "2015-05-01",
+		"Demonstrative": "Desmonstrative Teste",
+		"Url": "https://transactionsandbox.pagador.com.br/post/pagador/reenvia.asp/7f7ab0ff-d9a4-4b64-9adb-54e1529f3400",
+		"BoletoNumber": "123-2",
+		"BarCodeNumber": "00091641500000157009999250000000012399999990",
+		"DigitableLine": "00099.99921 50000.000013 23999.999909 1 64150000015700",
+		"Assignor": "Empresa Teste",
+		"Address": "Rua Teste",
+		"Identification": "11884926754",
+		"Bank": 0,
+		"Amount": 15700,
+		"ReceivedDate": "2024-01-24 11:01:41",
+		"Provider": "Simulado",
+		"Status": 1,
+		"IsSplitted": false,
+		"PaymentId": "7f7ab0ff-d9a4-4b64-9adb-54e1529f3400",
+		"Type": "Boleto",
+		"Currency": "BRL",
+		"Country": "BRA",
+		"Links": [
+			{
+				"Method": "GET",
+				"Rel": "self",
+				"Href": "https://apiquerysandbox.cieloecommerce.cielo.com.br/1/sales/7f7ab0ff-d9a4-4b64-9adb-54e1529f3400"
+			}
+		]
+	}
+}

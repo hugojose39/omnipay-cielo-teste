@@ -6,18 +6,22 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
 
 abstract class AbstractRequest extends BaseAbstractRequest
 {
-    protected $endpoint = sprintf('https://%s.cieloecommerce.cielo.com.br/', $this->getTestMode() ? 'apisandbox' : 'api');
+    public function endpoint(): string
+    {
+        return sprintf('https://%s.cieloecommerce.cielo.com.br/', $this->getTestMode() ? 'apisandbox' : 'api');
+    }
 
-    public function getMerchantOrderId(): array
+    public function getMerchantOrderId(): ?string
     {
         return $this->getParameter('merchant_order_id');
     }
+
     public function setMerchantOrderId($value): AbstractRequest
     {
         return $this->setParameter('merchant_order_id', $value);
     }
 
-    public function getCard(): array
+    public function getCard(): ?array
     {
         return $this->getParameter('card');
     }
@@ -27,27 +31,27 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('card', $value);
     }
 
-    public function getMerchantId(): string
+    public function getMerchantId(): ?string
     {
-        return $this->getParameter('MerchantId');
+        return $this->getParameter('merchantId');
     }
 
     public function setMerchantId(string $value): AbstractRequest
     {
-        return $this->setParameter('MerchantId', $value);
+        return $this->setParameter('merchantId', $value);
     }
 
-    public function getMerchantKey(): string
+    public function getMerchantKey(): ?string
     {
-        return $this->getParameter('MerchantKey');
+        return $this->getParameter('merchantKey');
     }
 
     public function setMerchantKey(string $value): AbstractRequest
     {
-        return $this->setParameter('MerchantKey', $value);
+        return $this->setParameter('merchantKey', $value);
     }
 
-    public function getCustomer(): array
+    public function getCustomer(): ?array
     {
         return $this->getParameter('customer');
     }
@@ -57,7 +61,7 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('customer', $value);
     }
 
-    protected function insertMerchantToData($data): array
+    protected function insertMerchantToData(array $data): array
     {
         $data['MerchantId'] = $this->getMerchantId();
         $data['MerchantKey'] = $this->getMerchantKey();
@@ -87,14 +91,14 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->response = new Response($this, $payload);
     }
 
-    protected function getOptions(): array
+    protected function getOptions(): mixed
     {
-        return [];
+        return '';
     }
 
     protected function getEndpoint()
     {
-        return $this->endpoint;
+        return $this->endpoint();
     }
 
     protected function createResponse($data)

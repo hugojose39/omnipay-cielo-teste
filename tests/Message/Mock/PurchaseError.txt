@@ -1,0 +1,9 @@
+HTTP/1.1 400 BadRequest
+Content-Type: application/json
+
+[
+	{
+		"Code": 101,
+		"Message": "MerchantId is required"
+	}
+]

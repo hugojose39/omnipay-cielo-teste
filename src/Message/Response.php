@@ -8,13 +8,17 @@ class Response extends AbstractResponse
 {
     public function isSuccessful()
     {
-        return !isset($this->data['MerchantOrderId']) || !isset($this->data['CardToken']);
+        return isset($this->data['MerchantOrderId']) || isset($this->data['CardToken']) || isset($this->data['Status']);
     }
 
     public function getTransactionReference(): ?string
     {
-        if (isset($this->data['object']) && 'transaction' === $this->data['object']) {
-            return $this->data['id'];
+        if (isset($this->data['Payment']['PaymentId'])) {
+            return $this->data['Payment']['PaymentId'];
+        }
+
+        if (isset($this->data['Tid'])) {
+            return $this->data['Tid'];
         }
 
         return null;

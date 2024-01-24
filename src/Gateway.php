@@ -18,8 +18,8 @@ class Gateway extends AbstractGateway
     public function getDefaultParameters(): array
     {
         return [
-            'MerchantId' => '',
-            'MerchantKey' => '',
+            'merchantId' => '',
+            'merchantKey' => '',
         ];
     }
 

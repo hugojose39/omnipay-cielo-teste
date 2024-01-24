@@ -4,8 +4,7 @@ namespace Hugojose39\OmnipayCieloTeste\Message;
 
 class AuthorizeRequest extends AbstractRequest
 {
-
-    public function getInstallments()
+    public function getInstallments(): ?int
     {
         return $this->getParameter('installments');
     }
@@ -15,7 +14,7 @@ class AuthorizeRequest extends AbstractRequest
         return $this->setParameter('installments', (int)$value);
     }
 
-    public function getSoftDescriptor(): string
+    public function getSoftDescriptor(): ?string
     {
         return $this->getParameter('soft_descriptor');
     }
@@ -25,12 +24,12 @@ class AuthorizeRequest extends AbstractRequest
         return $this->setParameter('soft_descriptor', substr($value, 0, 13));
     }
 
-    public function getProvider(): string
+    public function getProvider(): ?string
     {
         return $this->getParameter('provider');
     }
 
-    public function setBoletoProvider(string $value): AuthorizeRequest
+    public function setProvider(string $value): AuthorizeRequest
     {
         return $this->setParameter('provider', $value);
     }
@@ -41,14 +40,14 @@ class AuthorizeRequest extends AbstractRequest
 
         $data = [];
 
-        $data['MerchantOrderId'] = $this->getMerchantId();
+        $data['MerchantOrderId'] = $this->getMerchantOrderId();
         $data['Payment']['Amount'] = $this->getAmountInteger();
         $data['Payment']['Type'] = $this->getPaymentMethod();
         $data['Payment']['Installments'] = $this->getInstallments();
         $data['Payment']['SoftDescriptor'] = $this->getSoftDescriptor();
 
-        if ($this->getPaymentMethod() && ($this->getPaymentMethod() == 'boleto')) {
-            $data['Payment']['Provider'] = $this->getPaymentMethod();
+        if ($this->getPaymentMethod() && (strtolower($this->getPaymentMethod()) == 'boleto')) {
+            $data['Payment']['Provider'] = $this->getProvider();
 
             $data = array_merge($data, $this->getCustomerData());
         } elseif ($this->getCard()) {
@@ -64,6 +63,6 @@ class AuthorizeRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return $this->endpoint . '1/sales';
+        return $this->endpoint().'1/sales';
     }
 }
