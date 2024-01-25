@@ -38,9 +38,9 @@ repositório.
     // Crie um objeto de cartão
     // Ele será usado nos testes
     $card = [
-      'CardNumber' =>'4551870000000183',
+      'CardNumber' =>'4024007197692931',
       'Holder' =>'Teste Holder',
-      'ExpirationDate' =>'12/2021',
+      'ExpirationDate' =>'12/2030',
       'SecurityCode' =>'123',
       'Brand' =>'Visa'
     ];
@@ -88,7 +88,7 @@ repositório.
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
     // Inicialize o gateway
     $gateway->initialize([
         'merchantId' => 'MyMerchantId',
@@ -135,7 +135,7 @@ repositório.
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
   
     // Inicialize o gateway
     $gateway->initialize([
@@ -146,9 +146,9 @@ repositório.
     // Crie um objeto de cartão
     // Ele será usado nos testes
     $card = [
-      'CardNumber' =>'4551870000000183',
+      'CardNumber' =>'4024007197692931',
       'Holder' =>'Teste Holder',
-      'ExpirationDate' =>'12/2021',
+      'ExpirationDate' =>'12/2030',
       'SecurityCode' =>'123',
       'Brand' =>'Visa'
     ];
@@ -196,7 +196,7 @@ repositório.
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
     // Inicialize o gateway
     $gateway->initialize([
         'merchantId' => 'MyMerchantId',
@@ -243,7 +243,7 @@ repositório.
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
   
     // Inicialize o gateway
     $gateway->initialize([
@@ -265,11 +265,11 @@ repositório.
     }
 ```
 
-### Exemplo de ctokenização do cartão
+### Exemplo de tokenização do cartão de crédito
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
   
     // Inicialize o gateway
     $gateway->initialize([
@@ -281,7 +281,7 @@ repositório.
     $transaction = $gateway->createTokenCard([
         'card' => [
             'CustomerName' => 'Comprador Teste Cielo',
-            'CardNumber' => '4532117080573700',
+            'CardNumber' => '4024007197692931',
             'Holder' => 'Comprador T Cielo',
             'ExpirationDate' => '12/2030',
             'Brand' => 'Visa',

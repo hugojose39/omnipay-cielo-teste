@@ -17,7 +17,7 @@ class CaptureRequestTest extends TestCase
 
     public function testEndpoint()
     {
-        $this->assertSame('https://api.cieloecommerce.cielo.com.br/1/sales/111111/capture?amount=', $this->request->getEndpoint());
+        $this->assertSame('https://api.cieloecommerce.cielo.com.br/1/sales/111111/capture', $this->request->getEndpoint());
     }
 
     public function testSendSuccess()

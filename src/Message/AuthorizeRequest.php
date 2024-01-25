@@ -56,7 +56,7 @@ class AuthorizeRequest extends AbstractRequest
             $data = array_merge($data, $this->getCustomerData());
         }
 
-        $data['Payment']['Capture'] = true;
+        $data['Payment']['Capture'] = false;
 
         return $data;
     }

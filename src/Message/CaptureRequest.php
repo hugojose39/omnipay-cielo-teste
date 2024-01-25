@@ -6,14 +6,18 @@ class CaptureRequest extends AbstractRequest
 {
     public function getData(): array
     {
-        $data = [];
+        $data = [
+            '' => '',
+        ];
 
         return $data;
     }
 
     public function getEndpoint(): string
     {
-        return $this->endpoint().'1/sales/'.$this->getTransactionReference()."/capture?amount={$this->getAmountInteger()}";
+        $capture = $this->getAmountInteger() ? "/capture?amount={$this->getAmountInteger()}" : '/capture';
+
+        return $this->endpoint().'1/sales/'.$this->getTransactionReference().$capture;
     }
 
     public function getHttpMethod(): string
