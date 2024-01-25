@@ -1,12 +1,12 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Tests;
+namespace Omnipay\CieloTest\Tests;
 
-use Hugojose39\OmnipayCieloTeste\Gateway;
-use Hugojose39\OmnipayCieloTeste\Message\AuthorizeRequest;
-use Hugojose39\OmnipayCieloTeste\Message\CaptureRequest;
-use Hugojose39\OmnipayCieloTeste\Message\CreateCardTokenRequest;
-use Hugojose39\OmnipayCieloTeste\Message\PurchaseRequest;
+use Omnipay\CieloTest\Gateway;
+use Omnipay\CieloTest\Message\AuthorizeRequest;
+use Omnipay\CieloTest\Message\CaptureRequest;
+use Omnipay\CieloTest\Message\CreateCardTokenRequest;
+use Omnipay\CieloTest\Message\PurchaseRequest;
 use Omnipay\Tests\GatewayTestCase;
 
 class GatewayTest extends GatewayTestCase

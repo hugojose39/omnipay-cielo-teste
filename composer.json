@@ -5,12 +5,12 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hugojose39\\OmnipayCieloTeste\\": "src/"
+            "Omnipay\\CieloTest\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Hugojose39\\OmnipayCieloTeste\\Tests\\": "tests/"
+            "Omnipay\\CieloTest\\Tests\\": "tests/"
         }
     },
     "authors": [

@@ -27,7 +27,7 @@ repositório.
 ``` php
     // Crie um gateway para o Cielo Gateway
     // (rotas para GatewayFactory::create)
-    $gateway = Omnipay::create('Cielo');
+    $gateway = Omnipay::create('CieloTest');
   
     // Inicialize o gateway
     $gateway->initialize([

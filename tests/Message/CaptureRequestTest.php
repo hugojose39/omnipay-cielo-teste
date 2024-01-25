@@ -1,8 +1,8 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message\Tests;
+namespace Omnipay\CieloTest\Message\Tests;
 
-use Hugojose39\OmnipayCieloTeste\Message\CaptureRequest;
+use Omnipay\CieloTest\Message\CaptureRequest;
 use Omnipay\Tests\TestCase;
 
 class CaptureRequestTest extends TestCase

@@ -1,9 +1,9 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message\Tests;
+namespace Omnipay\CieloTest\Message\Tests;
 
 use Omnipay\Tests\TestCase;
-use Hugojose39\OmnipayCieloTeste\Message\AuthorizeRequest;
+use Omnipay\CieloTest\Message\AuthorizeRequest;
 
 class AuthorizeRequestTest extends TestCase
 {

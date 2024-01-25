@@ -1,8 +1,8 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message\Tests;
+namespace Omnipay\CieloTest\Message\Tests;
 
-use Hugojose39\OmnipayCieloTeste\Message\PurchaseRequest;
+use Omnipay\CieloTest\Message\PurchaseRequest;
 use Omnipay\Tests\TestCase;
 
 class PurchaseRequestTest extends TestCase

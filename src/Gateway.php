@@ -1,18 +1,18 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste;
+namespace Omnipay\CieloTest;
 
-use Hugojose39\OmnipayCieloTeste\Message\AuthorizeRequest;
-use Hugojose39\OmnipayCieloTeste\Message\CaptureRequest;
-use Hugojose39\OmnipayCieloTeste\Message\CreateCardTokenRequest;
-use Hugojose39\OmnipayCieloTeste\Message\PurchaseRequest;
+use Omnipay\CieloTest\Message\AuthorizeRequest;
+use Omnipay\CieloTest\Message\CaptureRequest;
+use Omnipay\CieloTest\Message\CreateCardTokenRequest;
+use Omnipay\CieloTest\Message\PurchaseRequest;
 use Omnipay\Common\AbstractGateway;
 
 class Gateway extends AbstractGateway
 {
     public function getName()
     {
-        return 'Cielo';
+        return 'CieloTest';
     }
 
     public function getDefaultParameters(): array

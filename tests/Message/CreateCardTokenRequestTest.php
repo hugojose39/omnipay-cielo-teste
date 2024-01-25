@@ -1,9 +1,9 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message\Tests;
+namespace Omnipay\CieloTest\Message\Tests;
 
 use Omnipay\Tests\TestCase;
-use Hugojose39\OmnipayCieloTeste\Message\CreateCardTokenRequest;
+use Omnipay\CieloTest\Message\CreateCardTokenRequest;
 
 class CreateCardTokenRequestTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message;
+namespace Omnipay\CieloTest\Message;
 
 class PurchaseRequest extends AuthorizeRequest
 {

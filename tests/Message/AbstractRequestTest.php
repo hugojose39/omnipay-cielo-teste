@@ -1,8 +1,8 @@
 <?php
 
-namespace Hugojose39\OmnipayCieloTeste\Message\Tests;
+namespace Omnipay\CieloTest\Message\Tests;
 
-use Hugojose39\OmnipayCieloTeste\Message\AbstractRequest;
+use Omnipay\CieloTest\Message\AbstractRequest;
 use Mockery;
 use Omnipay\Tests\TestCase;
 
