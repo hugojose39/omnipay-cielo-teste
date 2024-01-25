@@ -64,6 +64,7 @@ repositório.
   
     // Faça uma transação autorizada no gateway
     $transaction = $gateway->authorize([
+        'merchant_order_id'=> '123456',
         'amount'           => '10.00',
         'soft_descriptor'  => 'test',
         'payment_method'   => 'CreditCard',
@@ -113,6 +114,7 @@ repositório.
 
     // Faça uma transação autorizada no gateway
     $transaction = $gateway->authorize([
+        'merchant_order_id'=> '123456',
         'amount'           => '10.00',
         'provider'         => 'Bradesco',
         'payment_method'   => 'Boleto',
@@ -170,6 +172,7 @@ repositório.
   
     // Faça uma transação no gateway
     $transaction = $gateway->purchase([
+        'merchant_order_id'=> '123456',
         'amount'           => '10.00',
         'soft_descriptor'  => 'test',
         'payment_method'   => 'CreditCard',
@@ -219,6 +222,7 @@ repositório.
 
     // Faça uma transação autorizada no gateway
     $transaction = $gateway->purchase([
+        'merchant_order_id'=> '123456',
         'amount'           => '10.00',
         'provider'         => 'Bradesco',
         'payment_method'   => 'Boleto',
