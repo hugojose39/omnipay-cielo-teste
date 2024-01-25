@@ -23,16 +23,11 @@ class AbstractRequestTest extends TestCase
 
     public function testSetMerchantToData()
     {
-        $data = [];
-
         $this->request->setMerchantId('123abc');
         $this->request->setMerchantKey('123abc');
-        $data = $this->request->insertMerchantToData($data);
 
-        $this->assertArrayHasKey('MerchantId', $data);
-        $this->assertArrayHasKey('MerchantKey', $data);
-        $this->assertSame('123abc', $data['MerchantId']);
-        $this->assertSame('123abc', $data['MerchantKey']);
+        $this->assertSame('123abc', $this->request->getMerchantId());
+        $this->assertSame('123abc', $this->request->getMerchantKey());
     }
 
     public function testCustomer()

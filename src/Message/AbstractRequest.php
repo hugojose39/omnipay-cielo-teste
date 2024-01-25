@@ -61,14 +61,6 @@ abstract class AbstractRequest extends BaseAbstractRequest
         return $this->setParameter('customer', $value);
     }
 
-    protected function insertMerchantToData(array $data): array
-    {
-        $data['MerchantId'] = $this->getMerchantId();
-        $data['MerchantKey'] = $this->getMerchantKey();
-
-        return $data;
-    }
-
     public function getHttpMethod(): string
     {
         return 'POST';
@@ -80,9 +72,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
             $this->getHttpMethod(),
             $this->getEndpoint(),
             [
-                'Content-Type' => 'application/json'
+                'Content-Type' => 'application/json',
+                'MerchantId' => $this->getMerchantId() ?? '',
+                'MerchantKey' => $this->getMerchantKey() ?? '',
             ],
-            json_encode($this->insertMerchantToData($data)),
+            json_encode($data),
             $this->getOptions()
         );
 
