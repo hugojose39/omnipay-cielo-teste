@@ -48,7 +48,7 @@ repositório.
     // Crie um objeto de cliente
     // Ele será usado nos testes
     $customer = [
-      'Name' => 'Comprador Teste Boleto',
+      'Name' => 'Comprador Teste Cartão de crédito',
       'Identity' => '1234567890',
       'Address' => [
           'Street' => 'Avenida Marechal Câmara',
@@ -156,7 +156,7 @@ repositório.
     // Crie um objeto de cliente
     // Ele será usado nos testes
     $customer = [
-      'Name' => 'Comprador Teste Boleto',
+      'Name' => 'Comprador Teste Cartão de crédito',
       'Identity' => '1234567890',
       'Address' => [
           'Street' => 'Avenida Marechal Câmara',
