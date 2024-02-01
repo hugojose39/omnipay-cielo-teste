@@ -5,21 +5,36 @@ namespace Omnipay\CieloTest\Message\Tests;
 use Omnipay\Tests\TestCase;
 use Omnipay\CieloTest\Message\CreateCardTokenRequest;
 
+/**
+ * Classe CreateCardTokenRequestTest
+ *
+ * Esta classe contém os testes unitários para a classe CreateCardTokenRequest no namespace de mensagens de teste CieloTest.
+ */
 class CreateCardTokenRequestTest extends TestCase
 {
+    /** @var CreateCardTokenRequest $request */
     protected $request;
 
+    /**
+     * Configura o ambiente de teste.
+     */
     public function setUp(): void
     {
         $this->request = new CreateCardTokenRequest($this->getHttpClient(), $this->getHttpRequest());
     }
 
-    public function testEndpoint()
+    /**
+     * Testa o endpoint para criação de token de cartão.
+     */
+    public function testEndpoint(): void
     {
         $this->assertSame('https://api.cieloecommerce.cielo.com.br/1/card', $this->request->getEndpoint());
     }
 
-    public function testSendSuccess()
+    /**
+     * Testa o envio bem-sucedido para criação de token de cartão.
+     */
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CreateCardTokenSuccess.txt');
         $response = $this->request->send();
@@ -31,7 +46,10 @@ class CreateCardTokenRequestTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testSendError()
+    /**
+     * Testa o envio de erro para criação de token de cartão.
+     */
+    public function testSendError(): void
     {
         $this->setMockHttpResponse('CreateCardTokenError.txt');
         $response = $this->request->send();

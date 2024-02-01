@@ -6,22 +6,40 @@ use Omnipay\CieloTest\Message\AbstractRequest;
 use Mockery;
 use Omnipay\Tests\TestCase;
 
+/**
+ * Classe AbstractRequestTest
+ *
+ * Esta classe contém os testes unitários para a classe AbstractRequest no namespace de mensagens CieloTest.
+ */
 class AbstractRequestTest extends TestCase
 {
+    /** @var AbstractRequest|\Mockery\MockInterface $request */
     private $request;
 
+    /**
+     * Configura o ambiente de teste.
+     */
     public function setUp(): void
     {
         $this->request = Mockery::mock(AbstractRequest::class)->makePartial();
         $this->request->initialize();
     }
 
-    public function testGetEndpoint()
+    /**
+     * Caso de teste para verificar a URL de endpoint.
+     */
+    public function testGetEndpoint(): void
     {
-        $this->assertStringStartsWith('https://api.cieloecommerce.cielo.com.br/', $this->request->getEndpoint());
+        $this->assertStringStartsWith(
+            'https://api.cieloecommerce.cielo.com.br/',
+            $this->request->getEndpoint()
+        );
     }
 
-    public function testSetMerchantToData()
+    /**
+     * Caso de teste para definir o ID e a chave do comerciante.
+     */
+    public function testSetMerchantToData(): void
     {
         $this->request->setMerchantId('123abc');
         $this->request->setMerchantKey('123abc');
@@ -30,13 +48,22 @@ class AbstractRequestTest extends TestCase
         $this->assertSame('123abc', $this->request->getMerchantKey());
     }
 
-    public function testCustomer()
+    /**
+     * Caso de teste para definir e obter dados do cliente.
+     */
+    public function testCustomer(): void
     {
-        $this->assertSame($this->request, $this->request->setCustomer(['name' => 'Foo', 'email' => 'foo@example.com']));
+        $this->assertSame(
+            $this->request,
+            $this->request->setCustomer(['name' => 'Foo', 'email' => 'foo@example.com'])
+        );
         $this->assertSame(['name' => 'Foo', 'email' => 'foo@example.com'], $this->request->getCustomer());
     }
 
-    public function testCardData()
+    /**
+     * Caso de teste para obter dados do cartão.
+     */
+    public function testCardData(): void
     {
         $card = [
             'CustomerName' => 'Comprador Teste Cielo',

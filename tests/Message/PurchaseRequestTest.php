@@ -2,13 +2,22 @@
 
 namespace Omnipay\CieloTest\Message\Tests;
 
-use Omnipay\CieloTest\Message\PurchaseRequest;
 use Omnipay\Tests\TestCase;
+use Omnipay\CieloTest\Message\PurchaseRequest;
 
+/**
+ * Classe PurchaseRequestTest
+ *
+ * Esta classe contém os testes unitários para a classe PurchaseRequest no namespace de mensagens de teste CieloTest.
+ */
 class PurchaseRequestTest extends TestCase
 {
+    /** @var PurchaseRequest $request */
     protected $request;
 
+    /**
+     * Configura o ambiente de teste.
+     */
     public function setUp(): void
     {
         $this->request = new PurchaseRequest($this->getHttpClient(), $this->getHttpRequest());
@@ -25,17 +34,23 @@ class PurchaseRequestTest extends TestCase
                     'SaveCard' => 'true',
                     'Brand' => 'Visa',
                 ],
-            ],
+            ]
         );
     }
 
-    public function testCaptureIsTrue()
+    /**
+     * Testa se a captura está definida como verdadeira.
+     */
+    public function testCaptureIsTrue(): void
     {
         $data = $this->request->getData();
         $this->assertSame(true, $data['Payment']['Capture']);
     }
 
-    public function testSendSuccess()
+    /**
+     * Testa o envio bem-sucedido de uma transação de compra.
+     */
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->request->send();
@@ -49,7 +64,10 @@ class PurchaseRequestTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testSendError()
+    /**
+     * Testa o envio de erro de uma transação de compra.
+     */
+    public function testSendError(): void
     {
         $this->setMockHttpResponse('PurchaseError.txt');
         $response = $this->request->send();
@@ -62,7 +80,7 @@ class PurchaseRequestTest extends TestCase
                 'code' => 101,
                 'error' => 'MerchantId is required',
             ],
-            $response->getMessage(),
+            $response->getMessage()
         );
     }
 }

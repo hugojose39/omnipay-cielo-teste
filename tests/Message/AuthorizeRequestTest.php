@@ -5,47 +5,57 @@ namespace Omnipay\CieloTest\Message\Tests;
 use Omnipay\Tests\TestCase;
 use Omnipay\CieloTest\Message\AuthorizeRequest;
 
+/**
+ * Classe AuthorizeRequestTest
+ *
+ * Esta classe contém os testes unitários para a classe AuthorizeRequest no namespace de mensagens CieloTest.
+ */
 class AuthorizeRequestTest extends TestCase
 {
+    /** @var AuthorizeRequest $request */
     private $request;
 
+    /**
+     * Configura o ambiente de teste.
+     */
     public function setUp(): void
     {
         $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(
-            [
-                'merchant_order_id' => '123456',
-                'amount' => '12.00',
-                'card' => [
-                    'CardNumber' => '1234123412341231',
-                    'Holder' => 'Teste Holder',
-                    'ExpirationDate' => '03/2019',
-                    'SecurityCode' => '262',
-                    'SaveCard' => 'true',
-                    'Brand' => 'Visa',
-                ],
-                'customer' => [
-                    'Name' => 'Comprador Teste Boleto',
-                    'Identity' => '1234567890',
-                    'Address' => [
-                        'Street' => 'Avenida Marechal Câmara',
-                        'Number' => '160',
-                        'Complement' => 'Sala 934',
-                        'ZipCode' => '22750012',
-                        'District' => 'Centro',
-                        'City' => 'Rio de Janeiro',
-                        'State' => 'RJ',
-                        'Country' => 'BRA'
-                    ],
-                ],
-                'payment_method' => 'CreditCard',
-                'installments' => 1,
-                'soft_descriptor' => 'testeDeApi',
+        $this->request->initialize([
+            'merchant_order_id' => '123456',
+            'amount' => '12.00',
+            'card' => [
+                'CardNumber' => '1234123412341231',
+                'Holder' => 'Teste Holder',
+                'ExpirationDate' => '03/2019',
+                'SecurityCode' => '262',
+                'SaveCard' => 'true',
+                'Brand' => 'Visa',
             ],
-        );
+            'customer' => [
+                'Name' => 'Comprador Teste Boleto',
+                'Identity' => '1234567890',
+                'Address' => [
+                    'Street' => 'Avenida Marechal Câmara',
+                    'Number' => '160',
+                    'Complement' => 'Sala 934',
+                    'ZipCode' => '22750012',
+                    'District' => 'Centro',
+                    'City' => 'Rio de Janeiro',
+                    'State' => 'RJ',
+                    'Country' => 'BRA'
+                ],
+            ],
+            'payment_method' => 'CreditCard',
+            'installments' => 1,
+            'soft_descriptor' => 'testeDeApi',
+        ]);
     }
 
-    public function testGetData()
+    /**
+     * Testa a obtenção de dados para uma transação de cartão de crédito.
+     */
+    public function testGetData(): void
     {
         $card = [
             'CardNumber' => '1234123412341231',
@@ -66,33 +76,34 @@ class AuthorizeRequestTest extends TestCase
         $this->assertNotNull($data['Customer']);
     }
 
-    public function testGetDataForBoletoPaymentMethod()
+    /**
+     * Testa a obtenção de dados para uma transação de boleto.
+     */
+    public function testGetDataForBoletoPaymentMethod(): void
     {
         $this->request = new AuthorizeRequest($this->getHttpClient(), $this->getHttpRequest());
-        $this->request->initialize(
-            [
-                'merchant_order_id' => '123456',
-                'amount' => '12.00',
-                'customer' => [
-                    'Name' => 'Comprador Teste Boleto',
-                    'Identity' => '1234567890',
-                    'Address' => [
-                        'Street' => 'Avenida Marechal Câmara',
-                        'Number' => '160',
-                        'Complement' => 'Sala 934',
-                        'ZipCode' => '22750012',
-                        'District' => 'Centro',
-                        'City' => 'Rio de Janeiro',
-                        'State' => 'RJ',
-                        'Country' => 'BRA'
-                    ],
+        $this->request->initialize([
+            'merchant_order_id' => '123456',
+            'amount' => '12.00',
+            'customer' => [
+                'Name' => 'Comprador Teste Boleto',
+                'Identity' => '1234567890',
+                'Address' => [
+                    'Street' => 'Avenida Marechal Câmara',
+                    'Number' => '160',
+                    'Complement' => 'Sala 934',
+                    'ZipCode' => '22750012',
+                    'District' => 'Centro',
+                    'City' => 'Rio de Janeiro',
+                    'State' => 'RJ',
+                    'Country' => 'BRA'
                 ],
-                'payment_method' => 'Boleto',
-                'installments' => 1,
-                'soft_descriptor' => 'testeDeApi',
-                'provider' => 'Bradesco',
             ],
-        );
+            'payment_method' => 'Boleto',
+            'installments' => 1,
+            'soft_descriptor' => 'testeDeApi',
+            'provider' => 'Bradesco',
+        ]);
         $data = $this->request->getData();
 
         $this->assertSame(1200, $data['Payment']['Amount']);
@@ -103,7 +114,10 @@ class AuthorizeRequestTest extends TestCase
         $this->assertNotNull($data['Customer']);
     }
 
-    public function testSendSuccess()
+    /**
+     * Testa o envio de uma transação com sucesso.
+     */
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->request->send();
@@ -116,7 +130,10 @@ class AuthorizeRequestTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testSendError()
+    /**
+     * Testa o envio de uma transação com erro.
+     */
+    public function testSendError(): void
     {
         $this->setMockHttpResponse('PurchaseError.txt');
         $response = $this->request->send();
@@ -133,7 +150,10 @@ class AuthorizeRequestTest extends TestCase
         );
     }
 
-    public function testEndpoint()
+    /**
+     * Testa o endpoint da transação.
+     */
+    public function testEndpoint(): void
     {
         $this->assertSame('https://api.cieloecommerce.cielo.com.br/1/sales', $this->request->getEndpoint());
     }

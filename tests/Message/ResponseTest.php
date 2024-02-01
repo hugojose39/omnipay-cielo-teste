@@ -5,15 +5,28 @@ namespace Omnipay\CieloTest\Message\Tests;
 use Omnipay\CieloTest\Message\Response;
 use Omnipay\Tests\TestCase;
 
+/**
+ * Classe ResponseTest
+ *
+ * Esta classe contém os testes unitários para a classe Response no namespace de mensagens de teste CieloTest.
+ */
 class ResponseTest extends TestCase
 {
-
-    public function createResponse($mock)
+    /**
+     * Cria uma instância de Response com base na resposta HTTP fornecida.
+     *
+     * @param $mock
+     * @return Response
+     */
+    public function createResponse($mock): Response
     {
         return new Response($this->getMockRequest(), json_decode($mock->getBody()->getContents(), true));
     }
 
-    public function testPurchaseBoletoSuccess()
+    /**
+     * Testa o sucesso de uma compra com boleto.
+     */
+    public function testPurchaseBoletoSuccess(): void
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseBoletoSuccess.txt');
         $response = $this->createResponse($httpResponse);
@@ -26,7 +39,10 @@ class ResponseTest extends TestCase
         $this->assertSame('00091641500000157009999250000000012399999990', $data['boleto_barcode']);
     }
 
-    public function testAuthorizeBoletoSuccess()
+    /**
+     * Testa o sucesso de uma autorização com boleto.
+     */
+    public function testAuthorizeBoletoSuccess(): void
     {
         $httpResponse = $this->getMockHttpResponse('AuthorizeBoletoSuccess.txt');
         $response = $this->createResponse($httpResponse);
@@ -36,7 +52,10 @@ class ResponseTest extends TestCase
         $this->assertNotNull($response->getBoleto());
     }
 
-    public function testPurchaseSuccess()
+    /**
+     * Testa o sucesso de uma compra.
+     */
+    public function testPurchaseSuccess(): void
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseSuccess.txt');
         $response = $this->createResponse($httpResponse);
@@ -48,7 +67,10 @@ class ResponseTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testPurchaseError()
+    /**
+     * Testa o erro de uma compra.
+     */
+    public function testPurchaseError(): void
     {
         $httpResponse = $this->getMockHttpResponse('PurchaseError.txt');
         $response = $this->createResponse($httpResponse);
@@ -62,7 +84,7 @@ class ResponseTest extends TestCase
                 'code' => 101,
                 'error' => 'MerchantId is required',
             ],
-            $response->getMessage(),
+            $response->getMessage()
         );
     }
 }

@@ -5,22 +5,37 @@ namespace Omnipay\CieloTest\Message\Tests;
 use Omnipay\CieloTest\Message\CaptureRequest;
 use Omnipay\Tests\TestCase;
 
+/**
+ * Classe CaptureRequestTest
+ *
+ * Esta classe contém os testes unitários para a classe CaptureRequest no namespace de mensagens de teste CieloTest.
+ */
 class CaptureRequestTest extends TestCase
 {
+    /** @var CaptureRequest $request */
     private $request;
 
+    /**
+     * Configura o ambiente de teste.
+     */
     public function setUp(): void
     {
         $this->request = new CaptureRequest($this->getHttpClient(), $this->getHttpRequest());
         $this->request->setTransactionReference(111111);
     }
 
-    public function testEndpoint()
+    /**
+     * Testa o endpoint da captura.
+     */
+    public function testEndpoint(): void
     {
         $this->assertSame('https://api.cieloecommerce.cielo.com.br/1/sales/111111/capture', $this->request->getEndpoint());
     }
 
-    public function testSendSuccess()
+    /**
+     * Testa o envio de uma captura com sucesso.
+     */
+    public function testSendSuccess(): void
     {
         $this->setMockHttpResponse('CaptureSuccess.txt');
         $response = $this->request->send();
@@ -31,7 +46,10 @@ class CaptureRequestTest extends TestCase
         $this->assertNull($response->getMessage());
     }
 
-    public function testSendError()
+    /**
+     * Testa o envio de uma captura com erro.
+     */
+    public function testSendError(): void
     {
         $this->setMockHttpResponse('CaptureError.txt');
         $response = $this->request->send();

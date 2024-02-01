@@ -4,13 +4,28 @@ namespace Omnipay\CieloTest\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
 
+/**
+ * Classe Response
+ *
+ * Esta classe representa a resposta de uma solicitação no gateway Cielo.
+ */
 class Response extends AbstractResponse
 {
-    public function isSuccessful()
+    /**
+     * Verifica se a solicitação foi bem-sucedida.
+     *
+     * @return bool Retorna true se a solicitação foi bem-sucedida, caso contrário, false.
+     */
+    public function isSuccessful(): bool
     {
         return isset($this->data['MerchantOrderId']) || isset($this->data['CardToken']) || isset($this->data['Status']);
     }
 
+    /**
+     * Obtém a referência da transação.
+     *
+     * @return string|null Retorna a referência da transação, se disponível, caso contrário, null.
+     */
     public function getTransactionReference(): ?string
     {
         if (isset($this->data['Payment']['PaymentId'])) {
@@ -24,7 +39,12 @@ class Response extends AbstractResponse
         return null;
     }
 
-    public function getCardReference()
+    /**
+     * Obtém a referência do cartão.
+     *
+     * @return mixed Retorna a referência do cartão, se disponível, caso contrário, null.
+     */
+    public function getCardReference(): mixed
     {
         if (isset($this->data['CardToken'])) {
             return $this->data['CardToken'];
@@ -35,7 +55,12 @@ class Response extends AbstractResponse
         return null;
     }
 
-    public function getCustomerReference()
+    /**
+     * Obtém a referência do cliente.
+     *
+     * @return array|null Retorna a referência do cliente, se disponível, caso contrário, null.
+     */
+    public function getCustomerReference(): ?array
     {
         if (isset($this->data['MerchantOrderId']) && isset($this->data['Customer'])) {
             return $this->data['Customer'];
@@ -44,6 +69,11 @@ class Response extends AbstractResponse
         return null;
     }
 
+    /**
+     * Obtém a mensagem de erro, se houver.
+     *
+     * @return array|null Retorna a mensagem de erro, se houver, caso contrário, null.
+     */
     public function getMessage(): ?array
     {
         if (!$this->isSuccessful()) {
@@ -56,6 +86,11 @@ class Response extends AbstractResponse
         return null;
     }
 
+    /**
+     * Obtém os detalhes do boleto, se houver.
+     *
+     * @return array|null Retorna os detalhes do boleto, se houver, caso contrário, null.
+     */
     public function getBoleto(): ?array
     {
         if (isset($this->data['MerchantOrderId']) && isset($this->data['Payment']['BarCodeNumber'])) {
