@@ -2,10 +2,19 @@
 
 namespace Omnipay\CieloTest;
 
+use Omnipay\CieloTest\Message\AcceptNotificationRequest;
 use Omnipay\CieloTest\Message\AuthorizeRequest;
 use Omnipay\CieloTest\Message\CaptureRequest;
+use Omnipay\CieloTest\Message\CompleteAuthorizeRequest;
+use Omnipay\CieloTest\Message\CompletePurchaseRequest;
+use Omnipay\CieloTest\Message\CreateCardRequest;
 use Omnipay\CieloTest\Message\CreateCardTokenRequest;
+use Omnipay\CieloTest\Message\DeleteCardRequest;
+use Omnipay\CieloTest\Message\FetchTransactionRequest;
 use Omnipay\CieloTest\Message\PurchaseRequest;
+use Omnipay\CieloTest\Message\RefundRequest;
+use Omnipay\CieloTest\Message\UpdateCardRequest;
+use Omnipay\CieloTest\Message\VoidRequest;
 use Omnipay\Common\AbstractGateway;
 
 class Gateway extends AbstractGateway
@@ -58,8 +67,53 @@ class Gateway extends AbstractGateway
         return $this->createRequest(PurchaseRequest::class, $parameters);
     }
 
-    public function createTokenCard(array $parameters = array()): CreateCardTokenRequest
+    public function createTokenCard(array $parameters = []): CreateCardTokenRequest
     {
         return $this->createRequest(CreateCardTokenRequest::class, $parameters);
+    }
+
+    public function acceptNotification(array $parameters = []): AcceptNotificationRequest
+    {
+        return $this->createRequest(AcceptNotificationRequest::class, $parameters);
+    }
+
+    public function completeAuthorize(array $parameters = []): CompleteAuthorizeRequest
+    {
+        return $this->createRequest(CompleteAuthorizeRequest::class, $parameters);
+    }
+
+    public function completePurchase(array $parameters = []): CompletePurchaseRequest
+    {
+        return $this->createRequest(CompletePurchaseRequest::class, $parameters);
+    }
+
+    public function createCard(array $parameters = []): CreateCardRequest
+    {
+        return $this->createRequest(CreateCardRequest::class, $parameters);
+    }
+
+    public function deleteCard(array $parameters = []): DeleteCardRequest
+    {
+        return $this->createRequest(DeleteCardRequest::class, $parameters);
+    }
+
+    public function fetchTransaction(array $parameters = []): FetchTransactionRequest
+    {
+        return $this->createRequest(FetchTransactionRequest::class, $parameters);
+    }
+
+    public function refund(array $parameters = []): RefundRequest
+    {
+        return $this->createRequest(RefundRequest::class, $parameters);
+    }
+
+    public function void(array $parameters = []): VoidRequest
+    {
+        return $this->createRequest(VoidRequest::class, $parameters);
+    }
+
+    public function updateCard(array $parameters = []): UpdateCardRequest
+    {
+        return $this->createRequest(UpdateCardRequest::class, $parameters);
     }
 }
