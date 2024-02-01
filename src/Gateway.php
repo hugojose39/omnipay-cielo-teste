@@ -63,7 +63,7 @@ use Omnipay\Common\AbstractGateway;
  * definidos como parâmetros ao criar o objeto do gateway.
  *
  * @see \Omnipay\Common\AbstractGateway
- * @see \Omnipay\Pagarme\Message\AbstractRequest
+ * @see \Omnipay\CieloTest\Message\AbstractRequest
  * @link https://developercielo.github.io/manual/cielo-ecommerce
  */
 class Gateway extends AbstractGateway
