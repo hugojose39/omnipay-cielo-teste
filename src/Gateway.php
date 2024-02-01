@@ -97,6 +97,9 @@ class Gateway extends AbstractGateway
 
     /**
      * Define o ID do comerciante
+     *
+     * @param string $value O ID do comerciante
+     * @return Gateway
      */
     public function setMerchantId(string $value): Gateway
     {
@@ -113,6 +116,9 @@ class Gateway extends AbstractGateway
 
     /**
      * Define a chave do comerciante
+     *
+     * @param string $value A chave do comerciante
+     * @return Gateway
      */
     public function setMerchantKey(string $value): Gateway
     {
@@ -121,66 +127,144 @@ class Gateway extends AbstractGateway
 
     // Métodos para realizar diferentes tipos de transações
 
+    /**
+     * Inicia uma transação de autorização.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return AuthorizeRequest Objeto de solicitação de autorização
+     */
     public function authorize(array $parameters = []): AuthorizeRequest
     {
         return $this->createRequest(AuthorizeRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação de captura.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return CaptureRequest Objeto de solicitação de captura
+     */
     public function capture(array $parameters = []): CaptureRequest
     {
         return $this->createRequest(CaptureRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação de compra.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return PurchaseRequest Objeto de solicitação de compra
+     */
     public function purchase(array $parameters = []): PurchaseRequest
     {
         return $this->createRequest(PurchaseRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para criar um token de cartão.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return CreateCardTokenRequest Objeto de solicitação de criação de token de cartão
+     */
     public function createTokenCard(array $parameters = []): CreateCardTokenRequest
     {
         return $this->createRequest(CreateCardTokenRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para aceitar notificações.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return AcceptNotificationRequest Objeto de solicitação de aceitação de notificações
+     */
     public function acceptNotification(array $parameters = []): AcceptNotificationRequest
     {
         return $this->createRequest(AcceptNotificationRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para completar uma autorização.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return CompleteAuthorizeRequest Objeto de solicitação de conclusão de autorização
+     */
     public function completeAuthorize(array $parameters = []): CompleteAuthorizeRequest
     {
         return $this->createRequest(CompleteAuthorizeRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para completar uma compra.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return CompletePurchaseRequest Objeto de solicitação de conclusão de compra
+     */
     public function completePurchase(array $parameters = []): CompletePurchaseRequest
     {
         return $this->createRequest(CompletePurchaseRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para criar um cartão.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return CreateCardRequest Objeto de solicitação de criação de cartão
+     */
     public function createCard(array $parameters = []): CreateCardRequest
     {
         return $this->createRequest(CreateCardRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para excluir um cartão.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return DeleteCardRequest Objeto de solicitação de exclusão de cartão
+     */
     public function deleteCard(array $parameters = []): DeleteCardRequest
     {
         return $this->createRequest(DeleteCardRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para buscar uma transação.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return FetchTransactionRequest Objeto de solicitação de busca de transação
+     */
     public function fetchTransaction(array $parameters = []): FetchTransactionRequest
     {
         return $this->createRequest(FetchTransactionRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação de estorno.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return RefundRequest Objeto de solicitação de estorno
+     */
     public function refund(array $parameters = []): RefundRequest
     {
         return $this->createRequest(RefundRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação de cancelamento.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return VoidRequest Objeto de solicitação de cancelamento
+     */
     public function void(array $parameters = []): VoidRequest
     {
         return $this->createRequest(VoidRequest::class, $parameters);
     }
 
+    /**
+     * Inicia uma transação para atualizar um cartão.
+     *
+     * @param array $parameters Parâmetros da transação
+     * @return UpdateCardRequest Objeto de solicitação de atualização de cartão
+     */
     public function updateCard(array $parameters = []): UpdateCardRequest
     {
         return $this->createRequest(UpdateCardRequest::class, $parameters);
