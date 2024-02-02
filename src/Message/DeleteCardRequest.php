@@ -18,7 +18,9 @@ class DeleteCardRequest extends AbstractRequest
      */
     public function getData(): array
     {
-        $data = [];
+        $data = [
+            '' => '',
+        ];
 
         return $data;
     }

@@ -21,7 +21,9 @@ class CreateCardTokenRequest extends AbstractRequest
         if ($this->getCard()) {
             $data = $this->getCardData();
         } else {
-            $data = [];
+            $data = [
+                '' => '',
+            ];
         }
 
         return $data;

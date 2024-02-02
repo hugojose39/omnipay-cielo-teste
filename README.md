@@ -15,14 +15,14 @@ Baixe o código-fonte em um arquivo zip, ou, se você tiver o Git instalado, use
 
 Para começar a utilizar a biblioteca em desenvolvimento, você precisa ter o seguinte configurado:
 
+- PHP: Certifique-se de que o PHP está instalado e disponível no seu sistema. Você pode verificar se o PHP está instalado executando o seguinte comando:
+``` bash
+$  php --version
+```
+
 - Composer: Certifique-se de que o Composer está instalado e disponível no seu sistema. Você pode verificar se o Composer está instalado executando o seguinte comando:
 ``` bash
 $  composer --version
-```
-
-- PHP: Embora não seja estritamente necessário, é importante verificar se o PHP está instalado corretamente. Você pode verificar a versão do PHP com o seguinte comando:
-``` bash
-$  php --version
 ```
 
 ## Clonando o projeto
@@ -54,6 +54,16 @@ $   ./build composer test
 ``` bash
 $   ./build composer test tests/Message/PurchaseRequestTest.php
 ```
+
+### Possíveis problemas
+
+Durante o processo de configuração e utilização da biblioteca, esteja atento aos seguintes possíveis problemas:
+
+* Tentar utilizar o Composer sem ter o PHP instalado previamente.
+* Clonar o projeto sem ter instalado o GIT anteriormente.
+* Executar os comandos do Composer fora do diretório do projeto.
+* Executar os comandos do Composer sem usar o prefixo "./build".
+* Tentar executar um teste individual passando um caminho incorreto.
 
 **Observação: Todas as classes, inclusive os testes, possuem comentários que explicam sua funcionalidade.**
 
