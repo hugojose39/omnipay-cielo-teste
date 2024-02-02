@@ -3,6 +3,7 @@
 namespace Omnipay\CieloTest\Message;
 
 use Omnipay\Common\Message\AbstractResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Classe Response
@@ -72,15 +73,15 @@ class Response extends AbstractResponse
     /**
      * Obtém a mensagem de erro, se houver.
      *
-     * @return array|null Retorna a mensagem de erro, se houver, caso contrário, null.
+     * @return JsonResponse|null Retorna a mensagem de erro, se houver, caso contrário, null.
      */
-    public function getMessage(): ?array
+    public function getMessage(): ?JsonResponse
     {
         if (!$this->isSuccessful()) {
-            return [
-                'code' => $this->data[0]['Code'],
+            return new JsonResponse([
+                'code' => $this->data[0]['Code'], 
                 'error' => $this->data[0]['Message'],
-            ];
+            ], 400);
         }
 
         return null;

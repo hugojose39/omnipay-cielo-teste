@@ -4,6 +4,7 @@ namespace Omnipay\CieloTest\Message\Tests;
 
 use Omnipay\CieloTest\Message\Response;
 use Omnipay\Tests\TestCase;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Classe ResponseTest
@@ -75,16 +76,21 @@ class ResponseTest extends TestCase
         $httpResponse = $this->getMockHttpResponse('PurchaseError.txt');
         $response = $this->createResponse($httpResponse);
 
+        $jsonResponse = new JsonResponse(
+            [
+                'code' => 101,
+                'error' => 'MerchantId is required',
+            ],
+            400,
+        );
+
         $this->assertFalse($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertNull($response->getTransactionReference());
         $this->assertNull($response->getCardReference());
         $this->assertSame(
-            [
-                'code' => 101,
-                'error' => 'MerchantId is required',
-            ],
-            $response->getMessage()
+            $jsonResponse->getContent(),
+            $response->getMessage()->getContent(),
         );
     }
 }

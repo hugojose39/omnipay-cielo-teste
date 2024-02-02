@@ -80,6 +80,8 @@ repositório.
         $saleId = $response->getTransactionReference();
         $customerData = $response->getCustomerReference();
         $cardData = $response->getCardReference();
+    } else {
+        return $response->getMessage();
     }
 ```
 
@@ -128,7 +130,9 @@ repositório.
         $saleId = $response->getTransactionReference();
         $customerData = $response->getCustomerReference();
         $boletoData = $response->getBoleto();
-    }
+    } else {
+        return $response->getMessage();
+    }   
 ```
 
 ### Exemplo de transação com Cartão de crédito
@@ -188,6 +192,8 @@ repositório.
         $saleId = $response->getTransactionReference();
         $customerData = $response->getCustomerReference();
         $cardData = $response->getCardReference();
+    } else {
+        return $response->getMessage();
     }
 ```
 
@@ -236,6 +242,8 @@ repositório.
         $saleId = $response->getTransactionReference();
         $customerData = $response->getCustomerReference();
         $boletoData = $response->getBoleto();
+    } else {
+        return $response->getMessage();
     }
 ```
 
@@ -262,6 +270,8 @@ repositório.
     if ($response->isSuccessful()) {
         echo "Transação capturada com sucesso!\n";
         $saleId = $response->getTransactionReference();
+    } else {
+        return $response->getMessage();
     }
 ```
 
@@ -293,6 +303,8 @@ repositório.
     if ($response->isSuccessful()) {
         echo "Token criado com sucesso!\n";
         $cardData = $response->getCardReference();
+    } else {
+        return $response->getMessage();
     }
 ```
 
