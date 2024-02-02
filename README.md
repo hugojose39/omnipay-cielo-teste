@@ -1,3 +1,71 @@
+# Projeto biblioteca de pagamento no padrão da Omnipay para o Cielo
+
+**Esta seção da documentação destina-se ao desenvolvimento da biblioteca, testes e possíveis problemas. Se você estiver focado apenas na utilização da biblioteca, clique aqui [CieloTest](#omnipay-cielo).**
+
+Baixe o código-fonte em um arquivo zip, ou, se você tiver o Git instalado, use o comando git clone. Escolha a opção que melhor se adapta às suas necessidades - **HTTPS, SSH, GitHub CLI**. Abaixo estão as configurações para o ambiente de desenvolvimento.
+
+## Tecnologias usadas
+ * PHP
+ * Composer
+ * GIT
+ * Omnipay Common
+ * Omnipay Tests
+
+## Começando
+
+Para começar a utilizar a biblioteca em desenvolvimento, você precisa ter o seguinte configurado:
+
+- Composer: Certifique-se de que o Composer está instalado e disponível no seu sistema. Você pode verificar se o Composer está instalado executando o seguinte comando:
+``` bash
+$  composer --version
+```
+
+- PHP: Embora não seja estritamente necessário, é importante verificar se o PHP está instalado corretamente. Você pode verificar a versão do PHP com o seguinte comando:
+``` bash
+$  php --version
+```
+
+## Clonando o projeto
+
+Escolha uma das opções abaixo ou baixe o projeto em formato zip:
+
+``` bash
+$    HTTPS - git clone https://github.com/hugojose39/omnipay-cielo-teste.git
+$    SSH - git clone git@github.com:hugojose39/omnipay-cielo-teste.git
+$    GitHub CLI - gh repo clone hugojose39/omnipay-cielo-teste
+```
+
+Quando o projeto estiver em seu computador, acesse sua pasta e execute os comandos no seu terminal:
+
+* O seguinte comando automatiza a instalação das dependências do projeto usando o Composer:
+
+``` bash
+$   ./build composer install
+```
+
+* O próximo comando executa todos os testes disponíveis:
+
+``` bash
+$   ./build composer test
+```
+
+* Se preferir executar os testes individualmente, copie o caminho relativo e forneça-o, por exemplo:
+
+``` bash
+$   ./build composer test tests/Message/PurchaseRequestTest.php
+```
+
+**Observação: Todas as classes, inclusive os testes, possuem comentários que explicam sua funcionalidade.**
+
+Seguindo esses passos, você terá o código da biblioteca instalado corretamente, com suas dependências e testes executados de maneira apropriada.
+
+Se ocorrerem problemas durante o processo de configuração, verifique se todas as dependências foram instaladas corretamente e se todas as etapas foram seguidas adequadamente.
+
+Agora que você conhece o código por trás da biblioteca, você pode visualizá-lo no Packagist:
+[omnipay-cielo-teste](https://packagist.org/packages/hugojose39/omnipay-cielo-teste)
+
+Por fim, sinta-se à vontade para usá-lo em seus projetos Laravel seguindo os passos abaixo.
+
 # Omnipay: Cielo
 
 **Gateway Cielo para biblioteca de processamento de pagamentos Omnipay PHP**
